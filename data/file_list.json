@@ -8,13 +8,10 @@
             "inst": "vocals",
             "audio_path": "./data/samples/test0/queries/query1.mp3"
         },
-        "num_query": 2,
-        "retrieved": {
-            "audio_path": "./data/samples/test0/retrieved.mp3"
-        },
-        "retrieved_comp": {
-            "audio_path": "./data/samples/test0/retrieved_comp.mp3"
-        }
+        "a": "./data/samples/test0/retrieved_comp.mp3",
+        "b": "./data/samples/test0/retrieved.mp3",
+        "true": "b",
+        "num_query": 2
     },
     "1": {
         "query0": {
@@ -25,13 +22,10 @@
             "inst": "other",
             "audio_path": "./data/samples/test1/queries/query1.mp3"
         },
-        "num_query": 2,
-        "retrieved": {
-            "audio_path": "./data/samples/test1/retrieved.mp3"
-        },
-        "retrieved_comp": {
-            "audio_path": "./data/samples/test1/retrieved_comp.mp3"
-        }
+        "a": "./data/samples/test1/retrieved_comp.mp3",
+        "b": "./data/samples/test1/retrieved.mp3",
+        "true": "b",
+        "num_query": 2
     },
     "10": {
         "query0": {
@@ -42,13 +36,10 @@
             "inst": "vocals",
             "audio_path": "./data/samples/test10/queries/query1.mp3"
         },
-        "num_query": 2,
-        "retrieved": {
-            "audio_path": "./data/samples/test10/retrieved.mp3"
-        },
-        "retrieved_comp": {
-            "audio_path": "./data/samples/test10/retrieved_comp.mp3"
-        }
+        "a": "./data/samples/test10/retrieved.mp3",
+        "b": "./data/samples/test10/retrieved_comp.mp3",
+        "true": "a",
+        "num_query": 2
     },
     "11": {
         "query0": {
@@ -63,13 +54,10 @@
             "inst": "other",
             "audio_path": "./data/samples/test11/queries/query2.mp3"
         },
-        "num_query": 3,
-        "retrieved": {
-            "audio_path": "./data/samples/test11/retrieved.mp3"
-        },
-        "retrieved_comp": {
-            "audio_path": "./data/samples/test11/retrieved_comp.mp3"
-        }
+        "a": "./data/samples/test11/retrieved_comp.mp3",
+        "b": "./data/samples/test11/retrieved.mp3",
+        "true": "b",
+        "num_query": 3
     },
     "2": {
         "query0": {
@@ -80,13 +68,10 @@
             "inst": "other",
             "audio_path": "./data/samples/test2/queries/query1.mp3"
         },
-        "num_query": 2,
-        "retrieved": {
-            "audio_path": "./data/samples/test2/retrieved.mp3"
-        },
-        "retrieved_comp": {
-            "audio_path": "./data/samples/test2/retrieved_comp.mp3"
-        }
+        "a": "./data/samples/test2/retrieved.mp3",
+        "b": "./data/samples/test2/retrieved_comp.mp3",
+        "true": "a",
+        "num_query": 2
     },
     "3": {
         "query0": {
@@ -97,13 +82,10 @@
             "inst": "bass",
             "audio_path": "./data/samples/test3/queries/query1.mp3"
         },
-        "num_query": 2,
-        "retrieved": {
-            "audio_path": "./data/samples/test3/retrieved.mp3"
-        },
-        "retrieved_comp": {
-            "audio_path": "./data/samples/test3/retrieved_comp.mp3"
-        }
+        "a": "./data/samples/test3/retrieved_comp.mp3",
+        "b": "./data/samples/test3/retrieved.mp3",
+        "true": "b",
+        "num_query": 2
     },
     "4": {
         "query0": {
@@ -114,13 +96,10 @@
             "inst": "other",
             "audio_path": "./data/samples/test4/queries/query1.mp3"
         },
-        "num_query": 2,
-        "retrieved": {
-            "audio_path": "./data/samples/test4/retrieved.mp3"
-        },
-        "retrieved_comp": {
-            "audio_path": "./data/samples/test4/retrieved_comp.mp3"
-        }
+        "a": "./data/samples/test4/retrieved_comp.mp3",
+        "b": "./data/samples/test4/retrieved.mp3",
+        "true": "b",
+        "num_query": 2
     },
     "5": {
         "query0": {
@@ -131,13 +110,10 @@
             "inst": "vocals",
             "audio_path": "./data/samples/test5/queries/query1.mp3"
         },
-        "num_query": 2,
-        "retrieved": {
-            "audio_path": "./data/samples/test5/retrieved.mp3"
-        },
-        "retrieved_comp": {
-            "audio_path": "./data/samples/test5/retrieved_comp.mp3"
-        }
+        "a": "./data/samples/test5/retrieved.mp3",
+        "b": "./data/samples/test5/retrieved_comp.mp3",
+        "true": "a",
+        "num_query": 2
     },
     "6": {
         "query0": {
@@ -148,13 +124,10 @@
             "inst": "vocals",
             "audio_path": "./data/samples/test6/queries/query1.mp3"
         },
-        "num_query": 2,
-        "retrieved": {
-            "audio_path": "./data/samples/test6/retrieved.mp3"
-        },
-        "retrieved_comp": {
-            "audio_path": "./data/samples/test6/retrieved_comp.mp3"
-        }
+        "a": "./data/samples/test6/retrieved_comp.mp3",
+        "b": "./data/samples/test6/retrieved.mp3",
+        "true": "b",
+        "num_query": 2
     },
     "7": {
         "query0": {
@@ -165,13 +138,10 @@
             "inst": "other",
             "audio_path": "./data/samples/test7/queries/query1.mp3"
         },
-        "num_query": 2,
-        "retrieved": {
-            "audio_path": "./data/samples/test7/retrieved.mp3"
-        },
-        "retrieved_comp": {
-            "audio_path": "./data/samples/test7/retrieved_comp.mp3"
-        }
+        "a": "./data/samples/test7/retrieved_comp.mp3",
+        "b": "./data/samples/test7/retrieved.mp3",
+        "true": "b",
+        "num_query": 2
     },
     "8": {
         "query0": {
@@ -182,13 +152,10 @@
             "inst": "other",
             "audio_path": "./data/samples/test8/queries/query1.mp3"
         },
-        "num_query": 2,
-        "retrieved": {
-            "audio_path": "./data/samples/test8/retrieved.mp3"
-        },
-        "retrieved_comp": {
-            "audio_path": "./data/samples/test8/retrieved_comp.mp3"
-        }
+        "a": "./data/samples/test8/retrieved_comp.mp3",
+        "b": "./data/samples/test8/retrieved.mp3",
+        "true": "b",
+        "num_query": 2
     },
     "9": {
         "query0": {
@@ -199,12 +166,9 @@
             "inst": "vocals",
             "audio_path": "./data/samples/test9/queries/query1.mp3"
         },
-        "num_query": 2,
-        "retrieved": {
-            "audio_path": "./data/samples/test9/retrieved.mp3"
-        },
-        "retrieved_comp": {
-            "audio_path": "./data/samples/test9/retrieved_comp.mp3"
-        }
+        "a": "./data/samples/test9/retrieved.mp3",
+        "b": "./data/samples/test9/retrieved_comp.mp3",
+        "true": "a",
+        "num_query": 2
     }
 }

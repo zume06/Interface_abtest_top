@@ -24,7 +24,7 @@ $(document).ready(function () {
             return false;
         }
         Display();
-        outfile = `mixquery_2025sp_fiveeval_${name}.csv`;
+        outfile = `mixquery_2025sp_abtest_top_${name}.csv`;
         init();
 
     }
@@ -34,6 +34,8 @@ $(document).ready(function () {
     }
 
     function setButton() {
+        radio_checked = false;
+
         $(".radio_btn").prop("checked", false);
         if (n == 0) {
             $("#prev").prop("disabled", true);
@@ -46,27 +48,31 @@ $(document).ready(function () {
     }
 
     function evalRecord() {
-        result.push([set_no_array[n - 1], choice])
-        console.log(result);
+        var test_no_ = set_no_array[n];
+        result.push([test_no_, file_paths["a"], file_paths["b"], choice, truth])
+        console.log("result", result);
     }
 
     function setAudio() {
         var test_no = set_no_array[n]
-        let num_query = set_dict[test_no]["num_query"];
-        console.log(set_dict[test_no]["query0"]["audio_path"]);
+        num_query = set_dict[test_no]["num_query"];
         for (var i = 0; i < num_query; i++) {
-            console.log(i);
-            $(`#play_query${i}`).html(`${set_dict[test_no][`query${i}`]["inst"]} sound:<br><audio src="${set_dict[test_no][`query${i}`]["audio_path"]}" controls preload="auto"></audio>`);
+            $(`#inst_display${i}`).text(set_dict[test_no][`query${i}`]["inst"]);
+            $(`#play_query${i}`).html(`<br><audio src="${set_dict[test_no][`query${i}`]["audio_path"]}" controls preload="auto"></audio>`);
         }
-        $(`#play_retrieved`).html(`song:<br><audio src="${set_dict[test_no]["retrieved"]["audio_path"]}" controls preload="auto"></audio>`);
 
+        $(`#play_retrieved_a`).html(`A:<br><audio src="${set_dict[test_no]["a"]}" controls preload="auto"></audio>`);
+        $(`#play_retrieved_b`).html(`B:<br><audio src="${set_dict[test_no]["b"]}" controls preload="auto"></audio>`);
+
+        file_paths = { "a": set_dict[test_no]["a"], "b": set_dict[test_no]["b"] };
+        truth = set_dict[test_no]["true"];
     }
 
     function exportCSV() {
         var csvData = "";
-        csvData += "test_id,score\r\n";
+        csvData += "test_id,path_a,path_b,choice,true\r\n";
         for (var i = 0; i < result.length; i++) {
-            csvData += `${result[i][0]},${result[i][1]}\r\n`;
+            csvData += `${result[i][0]},${result[i][1]},${result[i][2]},${result[i][3]},${result[i][4]}\r\n`;
         }
         const link = document.createElement("a");
         document.body.appendChild(link);
@@ -82,45 +88,62 @@ $(document).ready(function () {
 
     function init() {
         n = 0;
+        choices = [];
         setAudio();
         setButton();
     }
 
     function next() {
-        n++;
-        setAudio();
         evalRecord();
+        n++;
+        choices = [];
+        setAudio();
         setButton();
     }
 
     function prev() {
         n--;
         setAudio();
-        evalRecord();
         setButton();
     }
 
     function finish() {
-        n++;
         evalRecord();
+        n++;
         exportCSV();
+    }
+
+    function ansCheck() {
+        if (radio_checked == true) {
+            if (n == (set_no_array.length - 1)) {
+                $("#finish").prop("disabled", false);
+            }
+            else {
+                $("#next").prop("disabled", false);
+            }
+        }
     }
 
     let set_dict;
     let n = 0;
     let result = [];
-    let choice;
+    let choices;
     let set_no_array = [];
     let outfile;
+    let file_paths = {}
+    let truth;
+    let radio_checked;
+    let choice;
+    let num_query;
 
-    $.getJSON("./data/database.json", function (d) {
+    $.getJSON("./data/file_list.json", function (d) {
         set_dict = d
         console.log(set_dict);
         for (let i = 0; i < Object.keys(set_dict).length; i++) {
             set_no_array.push(i);
         }
         set_no_array.shuffle();
-        console.log(set_no_array);
+        console.log("set_no_array", set_no_array);
     });
 
 
@@ -129,6 +152,7 @@ $(document).ready(function () {
     });
 
     $("#next").on("click", function () {
+        console.log(choices);
         next()
     });
 
@@ -141,14 +165,12 @@ $(document).ready(function () {
     });
 
     $(".radio_btn").on("click", function () {
-        if (n == (set_no_array.length - 1)) {
-            $("#finish").prop("disabled", false);
-        }
-        else {
-            $("#next").prop("disabled", false);
-        }
+        radio_checked = true;
         $(".radio_btn").not(this).prop("checked", false);
+        ansCheck();
         choice = $(this).attr("score");
+        console.log("choice", choice);
     });
+
 
 });
