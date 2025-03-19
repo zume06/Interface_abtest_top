@@ -102,6 +102,7 @@ $(document).ready(function () {
 
     function next() {
         evalRecord();
+        console.log(result);
         n++;
         choices = [];
         setAudio();
@@ -110,6 +111,8 @@ $(document).ready(function () {
 
     function prev() {
         n--;
+        result.splice(n, 1);
+        console.log(result);
         setAudio();
         setButton();
     }
