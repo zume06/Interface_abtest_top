@@ -54,12 +54,19 @@ $(document).ready(function () {
     }
 
     function setAudio() {
+        $("#page").text(`${n + 1}/${set_no_array.length}`);
         var test_no = set_no_array[n]
         num_query = set_dict[test_no]["num_query"];
         for (var i = 0; i < num_query; i++) {
             $(`#inst_display${i}`).text(set_dict[test_no][`query${i}`]["inst"]);
             $(`#play_query${i}`).html(`<br><audio src="${set_dict[test_no][`query${i}`]["audio_path"]}" controls preload="auto"></audio>`);
         }
+
+        if (num_query < 3) {
+            $("#audio_cont2").css("display", "none");
+        } else {
+            $("#audio_cont2").css("display", "block");
+        };
 
         $(`#play_retrieved_a`).html(`A:<br><audio src="${set_dict[test_no]["a"]}" controls preload="auto"></audio>`);
         $(`#play_retrieved_b`).html(`B:<br><audio src="${set_dict[test_no]["b"]}" controls preload="auto"></audio>`);
