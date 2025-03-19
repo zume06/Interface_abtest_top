@@ -1,1 +1,0 @@
-{"queries": {"query0": {"query_idx": 0, "inst": "drums", "track_id": "IN0", "seg_idx": "1"}, "query1": {"query_idx": 1, "inst": "vocals", "track_id": "IN28", "seg_idx": "13"}}, "retrieved": {"track_id": "REF1526", "seg_idx": 7}}
