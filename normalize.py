@@ -5,7 +5,8 @@ import os
 
 root = "./data/samples_org"
 out = "./data/samples"
-for testname in os.listdir(root):
+#for testname in os.listdir(root):
+for testname in ["test8"]:
     q_path = f"{root}/{testname}/queries"
     for file in os.listdir(q_path):
         audio = AudioSegment.from_file(f"{q_path}/{file}", format="mp3")
