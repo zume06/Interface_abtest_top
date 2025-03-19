@@ -35,7 +35,6 @@ $(document).ready(function () {
 
     function setButton() {
         radio_checked = false;
-
         $(".radio_btn").prop("checked", false);
         if (n == 0) {
             $("#prev").prop("disabled", true);
@@ -45,6 +44,24 @@ $(document).ready(function () {
         }
         $("#next").prop("disabled", true);
         $("#finish").prop("disabled", true);
+    }
+
+    function setButtonPrev() {
+        radio_checked = false;
+        $(".radio_btn").prop("checked", false);
+        var choice_prev = result[n][3];
+        $(`#radio_${choice_prev}`).prop("checked", true);
+        delete result[n];
+        radio_checked = true;
+        if (n == 0) {
+            $("#prev").prop("disabled", true);
+        }
+        else {
+            $("#prev").prop("disabled", false);
+        }
+        $("#next").prop("disabled", false);
+        $("#finish").prop("disabled", true);
+
     }
 
     function evalRecord() {
@@ -102,7 +119,6 @@ $(document).ready(function () {
 
     function next() {
         evalRecord();
-        console.log("result", result);
         n++;
         choices = [];
         setAudio();
@@ -111,12 +127,8 @@ $(document).ready(function () {
 
     function prev() {
         n--;
-        var choice_prev = result[n][3];
-        $(`#radio_${choice_prev}`).prop("checked", true);
-        delete result[n];
-        console.log("result", result);
         setAudio();
-        setButton();
+        setButtonPrev();
     }
 
     function finish() {
