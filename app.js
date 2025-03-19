@@ -49,8 +49,7 @@ $(document).ready(function () {
 
     function evalRecord() {
         var test_no_ = set_no_array[n];
-        result.push([test_no_, file_paths["a"], file_paths["b"], choice, truth])
-        console.log("result", result);
+        result[n] = [test_no_, file_paths["a"], file_paths["b"], choice, truth]
     }
 
     function setAudio() {
@@ -78,9 +77,10 @@ $(document).ready(function () {
     function exportCSV() {
         var csvData = "";
         csvData += "test_id,path_a,path_b,choice,true\r\n";
-        for (var i = 0; i < result.length; i++) {
-            csvData += `${result[i][0]},${result[i][1]},${result[i][2]},${result[i][3]},${result[i][4]}\r\n`;
-        }
+        Object.keys(result).forEach(key => {
+            var result_lst = result[key];
+            csvData += `${result_lst[0]},${result_lst[1]},${result_lst[2]},${result_lst[3]},${result_lst[4]}\r\n`;
+        });
         const link = document.createElement("a");
         document.body.appendChild(link);
         link.style = "display:none";
@@ -102,7 +102,7 @@ $(document).ready(function () {
 
     function next() {
         evalRecord();
-        console.log(result);
+        console.log("result", result);
         n++;
         choices = [];
         setAudio();
@@ -111,8 +111,10 @@ $(document).ready(function () {
 
     function prev() {
         n--;
-        result.splice(n, 1);
-        console.log(result);
+        var choice_prev = result[n][3];
+        $(`#radio_${choice_prev}`).prop("checked", true);
+        delete result[n];
+        console.log("result", result);
         setAudio();
         setButton();
     }
@@ -136,7 +138,7 @@ $(document).ready(function () {
 
     let set_dict;
     let n = 0;
-    let result = [];
+    let result = {};
     let choices;
     let set_no_array = [];
     let outfile;
@@ -148,7 +150,6 @@ $(document).ready(function () {
 
     $.getJSON("./data/file_list.json", function (d) {
         set_dict = d
-        console.log(set_dict);
         for (let i = 0; i < Object.keys(set_dict).length; i++) {
             set_no_array.push(i);
         }
@@ -162,7 +163,6 @@ $(document).ready(function () {
     });
 
     $("#next").on("click", function () {
-        console.log(choices);
         next()
     });
 
@@ -179,7 +179,6 @@ $(document).ready(function () {
         $(".radio_btn").not(this).prop("checked", false);
         ansCheck();
         choice = $(this).attr("score");
-        console.log("choice", choice);
     });
 
 
